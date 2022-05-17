@@ -8,4 +8,6 @@ comment3.params=m\ map
 comment3.target=boolean\ canMove(Moves,\ Tile[][])
 comment4.params=f
 comment4.target=Tile[][]\ mapFile(java.io.File)
-numComments=5
+comment5.params=f
+comment5.target=java.io.File[][]\ setFile(java.io.File)
+numComments=6

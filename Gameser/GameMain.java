@@ -14,7 +14,8 @@ public class GameMain implements ActionListener, KeyListener
   Player p;
   Sword s;
   ArrayList<Enemy> bad;
-  File f;
+  File[][] f;
+  int roomx, roomy;
   public GameMain()
   {
     makeMap();
@@ -23,27 +24,9 @@ public class GameMain implements ActionListener, KeyListener
     game();
   }
   private void makeMap(){
-    f = new File("room1");
-    map = Stat.mapFile(f);
-    /*map = new Tile[18][18];
-    for(int i = 1; i < map.length-1; i++){
-    for(int j = 1; j < map.length-1; j++){
-      map[i][j] = new NormalTile(i*30,j*30);}}
-    map[4][4] = new LavaTile(120,120);
-    map[5][4] = new LavaTile(150,120);
-    map[4][5] = new LavaTile(120,150);
-    map[5][5] = new LavaTile(150,150);
-    map[10][10] = new WaterTile(300,300);
-    map[10][11] = new WaterTile(300,330);
-    map[11][10] = new WaterTile(330,300);
-    map[11][11] = new WaterTile(330,330);
-    map[5][10] = new SpikeTile(150,300,1);
-    for(int i = 0; i < map.length; i++){
-      map[0][i] = new WallTile(0,i*30);
-      map[17][i] = new WallTile(510,i*30);
-      map[i][0] = new WallTile(i*30,0);
-      map[i][17] = new WallTile(i*30,510);
-    }*/
+    f = Stat.setFile(new File("roomSetup"));
+    
+    map = Stat.mapFile(f[roomx][roomy]);
     }
   private void setPanel()
   {
@@ -133,6 +116,18 @@ public class GameMain implements ActionListener, KeyListener
       if(bad.get(i).hp <=0) {bad.remove(i);
       i--;}
     }
+    if(p.x<0){roomx--;
+      p.x = 500;
+      map = Stat.mapFile(f[roomx][roomy]);}
+    if(p.y<0){roomy--;
+      p.y = 500;
+      map = Stat.mapFile(f[roomx][roomy]);}
+    if(p.x>=509){roomx++;
+      p.x = 0;
+      map = Stat.mapFile(f[roomx][roomy]);}
+    if(p.y>=509){roomy++;
+      p.y = 0;
+      map = Stat.mapFile(f[roomx][roomy]);}
     p.stuff();
     if(p.hp<=0){ endgame = true;
       g1.endGame();

@@ -64,4 +64,32 @@ public class Stat
       }
       return map;
     }
+    
+    public static File[][] setFile(File f){
+      File[][] ans;
+      ArrayList<String> s = new ArrayList<String>();
+      FileReader fr;
+      BufferedReader br;
+      String wait;
+      try{
+        fr = new FileReader(f);
+        br = new BufferedReader(fr);
+        wait = br.readLine();
+        while(wait != null){
+          s.add(wait);
+          wait = br.readLine();
+        }
+        br.close();
+      }
+       catch (IOException ex){}
+      ans = new File[s.get(0).length()/7][s.size()];
+      for(int i = 0; i < ans.length; i++){
+        for(int j = 0; j < ans[0].length; j++){
+          String t = s.get(i);
+          ans[i][j] = new File(t.substring(0,7));
+          s.set(i,t.substring(7));
+        }
+      }
+      return ans;
+    }
 }
