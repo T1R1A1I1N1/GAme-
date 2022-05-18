@@ -7,6 +7,11 @@ public class Enemy extends Moves
         super(x,y,xsiz,ysiz,speed,hp);
     }
 
+    public Enemy(int x, int y,int speed, int hp)
+    {
+        super(x,y,30,30,speed,hp);
+    }
+    
     public void fell(){dead = true;}
     
     public void move(){

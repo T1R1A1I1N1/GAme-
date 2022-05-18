@@ -92,4 +92,31 @@ public class Stat
       }
       return ans;
     }
+    
+    public static void roomen(ArrayList<Enemy> b, File f){
+      for(int i = b.size()-1; i >= 0; i--){b.remove(i);}
+      ArrayList<String> s = new ArrayList<String>();
+      FileReader fr;
+      BufferedReader br;
+      String wait;
+      try{
+        fr = new FileReader(f);
+        br = new BufferedReader(fr);
+        wait = br.readLine();
+        while(wait != null){
+          s.add(wait);
+          wait = br.readLine();
+        }
+        br.close();
+      }
+       catch (IOException ex){}
+      
+      for(int i = 0; i < s.size(); i++){
+        String type = s.get(i).substring(0,1);
+        int x = Integer.parseInt(s.get(i).substring(1,4));
+        int y= Integer.parseInt(s.get(i).substring(4,7));
+        if(type.equals("e")) b.add(new Enemy(x,y,4,4));
+        
+        }
+    }
 }

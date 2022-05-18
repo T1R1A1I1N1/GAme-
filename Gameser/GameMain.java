@@ -14,7 +14,7 @@ public class GameMain implements ActionListener, KeyListener
   Player p;
   Sword s;
   ArrayList<Enemy> bad;
-  File[][] f;
+  File[][] f, en;
   int roomx, roomy;
   public GameMain()
   {
@@ -25,8 +25,10 @@ public class GameMain implements ActionListener, KeyListener
   }
   private void makeMap(){
     f = Stat.setFile(new File("roomSetup"));
-    
-    map = Stat.mapFile(f[roomx][roomy]);
+    en = Stat.setFile(new File("roomSetupstuff"));
+    map = Stat.mapFile(f[roomy][roomx]);
+    bad = new ArrayList<Enemy>();
+    Stat.roomen(bad,en[roomy][roomx]);
     }
   private void setPanel()
   {
@@ -60,10 +62,8 @@ public class GameMain implements ActionListener, KeyListener
   }
   private void setVariables()
   {
-    p = new Player(200,200,30,30,3,5);
+    p = new Player(200,200,30,30,5,5);
     s = new Sword(p);
-    bad = new ArrayList<Enemy>();
-    bad.add(new Enemy(150,400,30,30,2,3));
   }
   private void game()
   {
@@ -118,16 +118,24 @@ public class GameMain implements ActionListener, KeyListener
     }
     if(p.x<0){roomx--;
       p.x = 500;
-      map = Stat.mapFile(f[roomx][roomy]);}
+      map = Stat.mapFile(f[roomy][roomx]);
+      Stat.roomen(bad,en[roomy][roomx]);
+      g1.map = map;}
     if(p.y<0){roomy--;
       p.y = 500;
-      map = Stat.mapFile(f[roomx][roomy]);}
+      map = Stat.mapFile(f[roomy][roomx]);
+      Stat.roomen(bad,en[roomy][roomx]);
+      g1.map = map;}
     if(p.x>=509){roomx++;
       p.x = 0;
-      map = Stat.mapFile(f[roomx][roomy]);}
+      map = Stat.mapFile(f[roomy][roomx]);
+      Stat.roomen(bad,en[roomy][roomx]);
+      g1.map = map;}
     if(p.y>=509){roomy++;
       p.y = 0;
-      map = Stat.mapFile(f[roomx][roomy]);}
+      map = Stat.mapFile(f[roomy][roomx]);
+      Stat.roomen(bad,en[roomy][roomx]);
+      g1.map = map;}
     p.stuff();
     if(p.hp<=0){ endgame = true;
       g1.endGame();
