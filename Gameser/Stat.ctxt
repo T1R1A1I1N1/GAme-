@@ -12,4 +12,6 @@ comment5.params=f
 comment5.target=java.io.File[][]\ setFile(java.io.File)
 comment6.params=b\ f
 comment6.target=void\ roomen(java.util.ArrayList,\ java.io.File)
-numComments=7
+comment7.params=s\ f
+comment7.target=void\ setInFile(java.lang.String,\ java.io.File)
+numComments=8

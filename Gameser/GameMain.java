@@ -9,7 +9,7 @@ public class GameMain implements ActionListener, KeyListener
   JPanel main, sub;
   GameGraph g1;
   JButton b1,b2;
-  boolean endgame,start;
+  boolean endgame,start,enkilled,Rshut;
   Tile[][] map;
   Player p;
   Sword s;
@@ -118,30 +118,51 @@ public class GameMain implements ActionListener, KeyListener
     }
     if(p.x<0){roomx--;
       p.x = 500;
-      map = Stat.mapFile(f[roomy][roomx]);
-      Stat.roomen(bad,en[roomy][roomx]);
-      g1.map = map;}
+      newRoom();
+      }
     if(p.y<0){roomy--;
       p.y = 500;
-      map = Stat.mapFile(f[roomy][roomx]);
-      Stat.roomen(bad,en[roomy][roomx]);
-      g1.map = map;}
+      newRoom();}
     if(p.x>=509){roomx++;
       p.x = 0;
-      map = Stat.mapFile(f[roomy][roomx]);
-      Stat.roomen(bad,en[roomy][roomx]);
-      g1.map = map;}
+      newRoom();}
     if(p.y>=509){roomy++;
       p.y = 0;
-      map = Stat.mapFile(f[roomy][roomx]);
-      Stat.roomen(bad,en[roomy][roomx]);
-      g1.map = map;}
+      newRoom();}
+    roomSpecial();
     p.stuff();
     if(p.hp<=0){ endgame = true;
       g1.endGame();
     }
+  }
+    
+  private void roomSpecial(){
+    if(roomx == 0 && roomy == 1 && !enkilled && !Rshut && p.x > 40 && p.y > 40 && p.x < 460 && p.y < 460){
+      Rshut = true;
+      map[0][9] = new WallTile(270,0);
+      map[0][8] = new WallTile(240,0);
+      map[17][9] = new WallTile(270,510);
+      map[17][8] = new WallTile(240,510);
+      map[8][17] = new WallTile(510,240);
+      map[9][17] = new WallTile(510,270);
+    } 
+    if(Rshut && bad.size() == 0){
+      enkilled = true;
+      map[0][9] = new NormalTile(270,0);
+      map[0][8] = new NormalTile(240,0);
+      map[17][9] = new NormalTile(270,510);
+      map[17][8] = new NormalTile(240,510);
+      map[8][17] = new NormalTile(510,240);
+      map[9][17] = new NormalTile(510,270);
+    }
     }
   
+  private void newRoom(){
+    map = Stat.mapFile(f[roomy][roomx]);
+    Stat.roomen(bad,en[roomy][roomx]);
+    g1.map = map;
+    }  
+    
   private void swordStuff(){
     s.stime--;
     s.updateSword();

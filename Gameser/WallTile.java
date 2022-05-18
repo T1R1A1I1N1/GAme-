@@ -7,7 +7,7 @@ public class WallTile extends Tile
     
     public WallTile(int x, int y)
     {
-       super(x,y,new Color(210,105,30));
+       super(x,y,new Color(210,105,30), new Color(180,75,0));
     }
 
     public String toString(){return "wall";}

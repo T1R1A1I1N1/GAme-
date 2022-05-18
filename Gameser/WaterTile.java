@@ -7,7 +7,7 @@ public class WaterTile extends Tile
     
     public WaterTile(int x, int y)
     {
-        super(x,y,Color.blue);
+        super(x,y,Color.blue, new Color(0,0,153));
     }
 
     public String toString(){return "water";}

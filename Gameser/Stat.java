@@ -58,8 +58,7 @@ public class Stat
           else if(key.equals("s")){map[j][i] = new SpikeTile(i*30,j*30,1);}
           else if(key.equals("w")){map[j][i] = new WallTile(i*30,j*30);}
           else if(key.equals("l")){map[j][i] = new LavaTile(i*30,j*30);}
-          else {map[j][i] = new WaterTile(i*30,j*30);
-            System.out.print("Value incompatible");}
+          else {map[j][i] = new WaterTile(i*30,j*30);}
         }
       }
       return map;
@@ -118,5 +117,15 @@ public class Stat
         if(type.equals("e")) b.add(new Enemy(x,y,4,4));
         
         }
+    }
+    
+    public static void setInFile(String s,File f){
+      try{
+      BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+      //bw.newLine();
+      bw.write(s);
+      bw.close();
+    }
+    catch(IOException e){}
     }
 }

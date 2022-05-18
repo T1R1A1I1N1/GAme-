@@ -7,7 +7,7 @@ public class LavaTile extends Tile
     
     public LavaTile(int x, int y)
     {
-        super(x,y,Color.orange);
+        super(x,y,Color.orange,new Color(255,153,0));
     }
 
     public String toString(){return "lava";}

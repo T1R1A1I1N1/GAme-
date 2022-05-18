@@ -29,7 +29,7 @@ public class GameGraph  extends JPanel
           for(Tile d : h){
             g.setColor(d.c);
             g.fillRect(d.x,d.y,d.xsiz,d.ysiz);
-            g.setColor(Color.black);
+            g.setColor(d.s);
             g.drawRect(d.x,d.y,d.xsiz,d.ysiz);
             }
         }
