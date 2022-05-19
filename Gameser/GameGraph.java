@@ -33,12 +33,15 @@ public class GameGraph  extends JPanel
             g.drawRect(d.x,d.y,d.xsiz,d.ysiz);
             }
         }
+        // player schenanigans
         if(p.inv) g.setColor(Color.green);
         else g.setColor(Color.blue);
         if(p.swim) g.setColor(new Color(0,0,200));
         g.fillRect(p.x,p.y,p.xsiz+1,p.ysiz+1);
+        // sword stuff
         g.setColor(Color.red);
         if(s.appear)g.fillRect(s.x,s.y,s.xsiz,s.ysiz);
+        // enemys
         g.setColor(Color.orange);
         for(Enemy e : bad){
             if(e.inv) g.setColor(Color.orange);

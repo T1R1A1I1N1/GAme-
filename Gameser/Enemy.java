@@ -9,14 +9,16 @@ public class Enemy extends Moves
 
     public Enemy(int x, int y,int speed, int hp)
     {
-        super(x,y,30,30,speed,hp);
+        super(x,y,27,27,speed,hp);
     }
     
     public void fell(){dead = true;}
     
-    public void move(){
+    public void move(Tile[][] map){
       x+= xdir;
       y+= ydir;
+      if(!Stat.canMove(this,map)){x-=xdir;
+        y-=ydir;}
       if(xdir>0) xdir--;
       if(xdir<0) xdir++;
       if(ydir>0) ydir--;

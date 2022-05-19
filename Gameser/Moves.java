@@ -16,11 +16,13 @@ public abstract class Moves extends Base
     public void hit(){
       invtim = 200;
       hp--;
+      inv = true;
     }
     
     public void hit(int n){
       invtim = 200;
       hp-=n;
+      inv = true;
     }
     
     public void hit(Moves m){
@@ -28,6 +30,9 @@ public abstract class Moves extends Base
       if(m.dir.equals("up")) ydir = -10;
       if(m.dir.equals("left")) xdir = -10;
       if(m.dir.equals("right")) xdir = 10;
+      invtim = 200;
+      hp--;
+      inv = true;
     }
     
     public void stuff(){

@@ -62,7 +62,7 @@ public class GameMain implements ActionListener, KeyListener
   }
   private void setVariables()
   {
-    p = new Player(200,200,30,30,5,5);
+    p = new Player(200,200,27,27,5,5);
     s = new Sword(p);
   }
   private void game()
@@ -131,6 +131,7 @@ public class GameMain implements ActionListener, KeyListener
       newRoom();}
     roomSpecial();
     p.stuff();
+    for(Enemy e: bad) e.move(map);
     if(p.hp<=0){ endgame = true;
       g1.endGame();
     }
@@ -146,7 +147,7 @@ public class GameMain implements ActionListener, KeyListener
       map[8][17] = new WallTile(510,240);
       map[9][17] = new WallTile(510,270);
     } 
-    if(Rshut && bad.size() == 0){
+    if(Rshut && bad.size() == 0 && !enkilled){
       enkilled = true;
       map[0][9] = new NormalTile(270,0);
       map[0][8] = new NormalTile(240,0);
@@ -172,7 +173,7 @@ public class GameMain implements ActionListener, KeyListener
   private void collision(){
     for(Enemy b: bad){
       if(Stat.collision(p,b) && !p.inv)p.hit();
-      if(Stat.collision(b,s) && s.appear && !b.inv) b.hit();
+      if(Stat.collision(b,s) && s.appear && !b.inv) b.hit(p);
     }
     
     }

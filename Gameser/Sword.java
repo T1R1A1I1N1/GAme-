@@ -14,13 +14,13 @@ public class Sword extends Base
     public void updateSword(){
         if(stime<0) appear = false;
         if(p.dir.equals("up")){
-          xsiz = p.xsiz;
+          xsiz = p.xsiz+1;
           x = p.x;
           ysiz = p.ysiz/2;
           y = p.y-ysiz;
         }
         if(p.dir.equals("down")){
-          xsiz = p.xsiz;
+          xsiz = p.xsiz+1;
           x = p.x;
           ysiz = p.ysiz/2;
           y = p.y+p.ysiz;
@@ -28,13 +28,13 @@ public class Sword extends Base
         if(p.dir.equals("left")){
           xsiz = p.xsiz/2;
           x = p.x-xsiz;
-          ysiz = p.ysiz;
+          ysiz = p.ysiz+1;
           y = p.y;
         }
         if(p.dir.equals("right")){
           xsiz = p.xsiz/2;
           x = p.x+p.xsiz;
-          ysiz = p.ysiz;
+          ysiz = p.ysiz+1;
           y = p.y;
         }
     }
