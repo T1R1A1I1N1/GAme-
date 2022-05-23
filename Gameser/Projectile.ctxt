@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Projectile
+comment1.params=x\ y\ xdir\ ydir
+comment1.target=Projectile(int,\ int,\ int,\ int)
+comment2.params=x\ y\ targ
+comment2.target=Projectile(int,\ int,\ Moves)
+comment3.params=
+comment3.target=void\ move()
+comment4.params=
+comment4.target=void\ hit()
+numComments=5

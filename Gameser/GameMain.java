@@ -16,6 +16,7 @@ public class GameMain implements ActionListener, KeyListener
   ArrayList<Enemy> bad;
   File[][] f, en;
   int roomx, roomy;
+  Projectile pr;
   public GameMain()
   {
     makeMap();
@@ -43,7 +44,7 @@ public class GameMain implements ActionListener, KeyListener
     b2 =  new JButton("End");
       b2.addActionListener(this);
       
-    g1 = new GameGraph(map,p,s,bad);
+    g1 = new GameGraph(map,p,s,bad,pr);
       g1.addKeyListener(this);  
       
     
@@ -64,6 +65,7 @@ public class GameMain implements ActionListener, KeyListener
   {
     p = new Player(200,200,27,27,5,5);
     s = new Sword(p);
+    pr = new Projectile(70,30,p);
   }
   private void game()
   {
@@ -130,6 +132,7 @@ public class GameMain implements ActionListener, KeyListener
       p.y = 0;
       newRoom();}
     roomSpecial();
+    pr.move();
     p.stuff();
     for(Enemy e: bad) e.move(map);
     if(p.hp<=0){ endgame = true;

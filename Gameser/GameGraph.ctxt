@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=GameGraph
-comment1.params=map\ p\ s\ bad
-comment1.target=GameGraph(Tile[][],\ Player,\ Sword,\ java.util.ArrayList)
+comment1.params=map\ p\ s\ bad\ pr
+comment1.target=GameGraph(Tile[][],\ Player,\ Sword,\ java.util.ArrayList,\ Projectile)
 comment2.params=
 comment2.target=void\ endGame()
 comment3.params=g
