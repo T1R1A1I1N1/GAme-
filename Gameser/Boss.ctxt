@@ -2,4 +2,10 @@
 comment0.target=Boss
 comment1.params=x\ y\ xsiz\ ysiz\ speed\ hp
 comment1.target=Boss(int,\ int,\ int,\ int,\ int,\ int)
-numComments=2
+comment2.params=map
+comment2.target=void\ runBoss(Tile[][])
+comment3.params=p
+comment3.target=Projectile\ bossStuff(Player)
+comment4.params=
+comment4.target=java.lang.String\ toString()
+numComments=5

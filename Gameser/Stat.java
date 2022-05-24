@@ -58,6 +58,7 @@ public class Stat
           else if(key.equals("s")){map[j][i] = new SpikeTile(i*30,j*30,1);}
           else if(key.equals("w")){map[j][i] = new WallTile(i*30,j*30);}
           else if(key.equals("l")){map[j][i] = new LavaTile(i*30,j*30);}
+          else if(key.equals("f")){map[j][i] = new FalseNormal(i*30,j*30);}
           else {map[j][i] = new WaterTile(i*30,j*30);}
         }
       }
@@ -115,7 +116,7 @@ public class Stat
         int x = Integer.parseInt(s.get(i).substring(1,4));
         int y= Integer.parseInt(s.get(i).substring(4,7));
         if(type.equals("e")) b.add(new Enemy(x,y,4,4));
-        
+        if(type.equals("b")) b.add(new Boss(x,y,40,40,2,10));
         }
     }
     

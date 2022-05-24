@@ -3,6 +3,7 @@ public class Projectile
 {
     double x,y,xdir,ydir;
     boolean dead;
+    int age;
     public Projectile(int x, int y, int xdir, int ydir)
     {
       this.x = x;
@@ -12,19 +13,24 @@ public class Projectile
     }
     
     public Projectile(int x, int y, Moves targ){
+      
+      this.x = x;
+      this.y = y;
+      updateDir(targ);
+    }
+    
+    public void updateDir(Moves targ){
       int dist,ydist,xdist;
-      ydist = targ.y-y;
-      xdist = targ.x-x;
+      ydist = targ.y-(int)y;
+      xdist = targ.x-(int)x;
       dist = (int)Math.sqrt(xdist*xdist+ydist*ydist);
       xdir = (double)xdist/dist;
       ydir = (double)ydist/dist;
-      this.x = x;
-      this.y = y;
-      
     }
     
     public void move(){x+=xdir;
-    y+=ydir;}
+    y+=ydir;
+    age++;}
     
     public void hit(){dead = true;}
 }

@@ -12,14 +12,20 @@ public class FalseNormal extends NormalTile
         isnormal = true;
     }
     
-    public void swapn(){
+    public void swapN(){
       isnormal = true;
       timeswap = 0;
+      c = new Color(102,255,102);
+      s = new Color(72,195,72);
     }
     
-    public Projectile swapl(Moves m){
+    public Projectile swapL(Moves m){
       isnormal = false;
       timeswap = 0;
+      c = Color.orange;
+      s = new Color(255,153,0);
       return new Projectile(x,y,m);
     }
+    
+    public String toString(){return "fake";}
 }

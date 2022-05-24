@@ -10,8 +10,8 @@ public class GameGraph  extends JPanel
     Sword s;
     ArrayList<Enemy> bad;
     boolean[] endgame;
-    Projectile pr;
-    public GameGraph(Tile[][] map, Player p,Sword s, ArrayList<Enemy> bad,Projectile pr)
+    ArrayList<Projectile> pr;
+    public GameGraph(Tile[][] map, Player p,Sword s, ArrayList<Enemy> bad,ArrayList<Projectile> pr)
     { this.map = map;
       this.p = p;
       this.s = s;
@@ -54,6 +54,7 @@ public class GameGraph  extends JPanel
         g.drawRect(0,550,540,30);
         g.setColor(Color.red);
         g.fillRect(1,551,(int)(((p.hp*1.0)/p.maxHP)*540)-1,29);
-        g.fillRect((int)pr.x,(int)pr.y,10,10);
+        for(int i = 0; i < pr.size(); i++){
+        g.fillRect((int)pr.get(i).x,(int)pr.get(i).y,10,10);}
     }
 }
