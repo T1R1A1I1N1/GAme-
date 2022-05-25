@@ -28,4 +28,6 @@ public class FalseNormal extends NormalTile
     }
     
     public String toString(){return "fake";}
+    
+    public void incSwap(){timeswap++;}
 }

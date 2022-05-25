@@ -8,4 +8,6 @@ comment3.params=m
 comment3.target=Projectile\ swapL(Moves)
 comment4.params=
 comment4.target=java.lang.String\ toString()
-numComments=5
+comment5.params=
+comment5.target=void\ incSwap()
+numComments=6

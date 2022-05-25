@@ -100,6 +100,9 @@ public class GameMain implements ActionListener, KeyListener
     boolean safe = true;
     for(Tile[] g: map){
         for(Tile t: g){
+        if(t.toString().equals("fake")) ((FalseNormal)t).incSwap();
+        if(t.toString().equals("fake") && !((FalseNormal)t).isnormal && ((FalseNormal)t).timeswap > 6000){
+        ((FalseNormal)t).swapN();} 
         if(Stat.collision(t,p)) {
           if(t.toString().equals("spike") && !p.inv) p.hit(((SpikeTile)t).dam);
           if(!t.toString().equals("water")) swim = false;
@@ -183,8 +186,12 @@ public class GameMain implements ActionListener, KeyListener
     for(Enemy b: bad){
       if(Stat.collision(p,b) && !p.inv)p.hit();
       if(Stat.collision(b,s) && s.appear && !b.inv) b.hit(p);
+      for(Projectile pro: pr)
+      if(Stat.collision(pro,b) && !b.inv) b.hit();
     }
-    
+    for(Projectile pro: pr){
+      if(Stat.collision(pro,s) && !pro.deflect && s.appear) pro.hit();
+      if(Stat.collision(pro,p)) p.hit();}
     }
 
   public void actionPerformed (ActionEvent event)

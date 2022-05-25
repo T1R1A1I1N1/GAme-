@@ -1,11 +1,12 @@
 
-public class Projectile
+public class Projectile extends Base
 {
     double x,y,xdir,ydir;
-    boolean dead;
+    boolean deflect;
     int age;
     public Projectile(int x, int y, int xdir, int ydir)
     {
+      super(x,y,10,10);
       this.x = x;
       this.y = y; 
       this.xdir = xdir;
@@ -13,7 +14,7 @@ public class Projectile
     }
     
     public Projectile(int x, int y, Moves targ){
-      
+      super(x,y,10,10);
       this.x = x;
       this.y = y;
       updateDir(targ);
@@ -32,5 +33,7 @@ public class Projectile
     y+=ydir;
     age++;}
     
-    public void hit(){dead = true;}
+    public void hit(){deflect = true;
+    xdir*=-1;
+    ydir*=-1;}
 }
