@@ -120,6 +120,7 @@ public class GameMain implements ActionListener, KeyListener
     for(int i = 0; i < bad.size(); i++){bad.get(i).stuff();
       if(bad.get(i).hp <=0) {bad.remove(i);
       i--;}
+      if(bad.size() == 0) break;
       if(bad.get(i).toString().equals("boss")){
         if(!((Boss)bad.get(i)).g){((Boss)bad.get(i)).runBoss(map);}
         if(((Boss)bad.get(i)).q%250 == 0){pr.add(((Boss)bad.get(i)).bossStuff(p));}
@@ -129,16 +130,24 @@ public class GameMain implements ActionListener, KeyListener
     if(p.x<0){roomx--;
       p.x = 500;
       newRoom();
+      p.safex = p.x;
+      p.safey = p.y;
       }
     if(p.y<0){roomy--;
       p.y = 500;
-      newRoom();}
+      newRoom();
+    p.safex = p.x;
+      p.safey = p.y;}
     if(p.x>=509){roomx++;
       p.x = 0;
-      newRoom();}
+      newRoom();
+    p.safex = p.x;
+      p.safey = p.y;}
     if(p.y>=509){roomy++;
       p.y = 0;
-      newRoom();}
+      newRoom();
+    p.safex = p.x;
+      p.safey = p.y;}
     roomSpecial();
     for(int i = 0; i < pr.size(); i++){
     pr.get(i).move();}
@@ -187,11 +196,12 @@ public class GameMain implements ActionListener, KeyListener
       if(Stat.collision(p,b) && !p.inv)p.hit();
       if(Stat.collision(b,s) && s.appear && !b.inv) b.hit(p);
       for(Projectile pro: pr)
-      if(Stat.collision(pro,b) && !b.inv) b.hit();
+      if(Stat.collision(pro,b) && !b.inv && pro.age > 30 && pro.deflect) b.hit();
     }
     for(Projectile pro: pr){
-      if(Stat.collision(pro,s) && !pro.deflect && s.appear) pro.hit();
-      if(Stat.collision(pro,p)) p.hit();}
+      if(Stat.collision(pro,s) && !pro.deflect && s.appear) if(bad.size() != 0)pro.hit(bad.get(0));
+      else pro.hit();
+      if(Stat.collision(pro,p) && !p.inv) p.hit();}
     }
 
   public void actionPerformed (ActionEvent event)

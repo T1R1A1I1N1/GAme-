@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Projectile
-comment1.params=x\ y\ xdir\ ydir
+comment1.params=xd\ yd\ xdir\ ydir
 comment1.target=Projectile(int,\ int,\ int,\ int)
-comment2.params=x\ y\ targ
+comment2.params=xd\ yd\ targ
 comment2.target=Projectile(int,\ int,\ Moves)
 comment3.params=targ
 comment3.target=void\ updateDir(Moves)
@@ -10,4 +10,6 @@ comment4.params=
 comment4.target=void\ move()
 comment5.params=
 comment5.target=void\ hit()
-numComments=6
+comment6.params=b
+comment6.target=void\ hit(Moves)
+numComments=7

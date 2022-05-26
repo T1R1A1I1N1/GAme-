@@ -20,7 +20,7 @@ public class Stat
     for(Tile[] l: map){for(Tile t: l){
       if(Stat.collision(m,t)){
         if(t.toString().equals("wall")) return false;
-        if(!t.toString().equals("lava")) {
+        if(!(t.toString().equals("lava") || (t.toString().equals("fake") && !((FalseNormal)t).isnormal))) {
           lava = false;
         }
       }
